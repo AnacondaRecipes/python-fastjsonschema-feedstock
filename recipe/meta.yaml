@@ -11,7 +11,7 @@ source:
     sha256: 671f36d225b3493629b5e789428660109528f373cf4b8a22bac6fa2f8191c2d2
   - folder: src
     url: https://github.com/horejsek/python-{{ name }}/archive/v{{ version }}.tar.gz
-    sha256: 671f36d225b3493629b5e789428660109528f373cf4b8a22bac6fa2f8191c2d2
+    sha256: 1a59d7ca91c90b79160ad43859caddb699cad07ddbb91c364a15b1b18f3a1fc4
 
 build:
   noarch: python
