@@ -14,14 +14,17 @@ source:
 
 build:
   number: 0
+  skip: True  # [py<36]
   script: cd dist && {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.3
+    - python
     - pip
+    - wheel
+    - setuptools
   run:
-    - python >=3.3
+    - python
 
 test:
   source_files:
@@ -44,6 +47,7 @@ about:
     fastjsonschema implements validation of JSON documents by JSON schema. The
     library implements JSON schema drafts 04, 06 and 07. The main purpose is to
     have a really fast implementation.
+  dev_url: https://github.com/horejsek/python-fastjsonschema
   doc_url: https://horejsek.github.io/python-fastjsonschema
   doc_source_url: https://github.com/horejsek/python-fastjsonschema/tree/master/docs
 
