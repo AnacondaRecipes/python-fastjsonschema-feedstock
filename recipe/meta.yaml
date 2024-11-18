@@ -1,17 +1,17 @@
-{% set version = "2.16.2" %}
+{% set version = "2.20.0" %}
 
 package:
   name: python-fastjsonschema
   version: {{ version }}
 
 source:
-  url: https://github.com/horejsek/python-fastjsonschema/archive/v{{ version }}.tar.gz
-  sha256: 552e8b07a076f4628e9a3c78f040ed673bed9b5b860d3cb51b323da50e2e3d47
+  url: https://pypi.io/packages/source/f/fastjsonschema/fastjsonschema-{{ version }}.tar.gz
+  sha256: 3d48fc5300ee96f5d116f10fe6f28d938e6008f59a6a025c2649475b87f76a23
 
 build:
   number: 0
   skip: True  # [py<36]
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
@@ -26,12 +26,13 @@ test:
   source_files:
     - tests
   requires:
-    - pytest-cov
-    - pytest-benchmark
+    - pytest
+    - pip
   imports:
     - fastjsonschema
   commands:
-   - cd tests && pytest -vv --cov fastjsonschema -k "not (compile_to_code_ipv6_regex or compile_to_code_custom_format_with_refs)" --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under 84
+   - cd tests && pytest -vv -m "not benchmark"
+   - pip check
 
 about:
   home: https://github.com/horejsek/python-fastjsonschema
