@@ -1,16 +1,16 @@
-{% set version = "2.20.0" %}
+{% set name = "python-fastjsonschema" %}
+{% set version = "2.21.2" %}
 
 package:
-  name: python-fastjsonschema
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/f/fastjsonschema/fastjsonschema-{{ version }}.tar.gz
-  sha256: 3d48fc5300ee96f5d116f10fe6f28d938e6008f59a6a025c2649475b87f76a23
+  url: https://pypi.org/packages/source/{{ name.split('-')[1][0] }}/{{ name.split('-')[1] }}/{{ name.split('-')[1] }}-{{ version }}.tar.gz
+  sha256: b1eb43748041c880796cd077f1a07c3d94e93ae84bba5ed36800a33554ae05de
 
 build:
   number: 0
-  skip: True  # [py<36]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -25,14 +25,14 @@ requirements:
 test:
   source_files:
     - tests
-  requires:
-    - pytest
-    - pip
   imports:
     - fastjsonschema
   commands:
-   - cd tests && pytest -vv -m "not benchmark"
-   - pip check
+    - pip check
+    - cd tests && pytest -vv -m "not benchmark"
+  requires:
+    - pip
+    - pytest
 
 about:
   home: https://github.com/horejsek/python-fastjsonschema
