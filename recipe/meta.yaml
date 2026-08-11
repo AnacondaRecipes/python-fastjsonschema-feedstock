@@ -1,5 +1,5 @@
 {% set name = "python-fastjsonschema" %}
-{% set version = "2.21.2" %}
+{% set version = "2.22.1" %}
 
 package:
   name: {{ name }}
@@ -7,11 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name.split('-')[1][0] }}/{{ name.split('-')[1] }}/{{ name.split('-')[1] }}-{{ version }}.tar.gz
-  sha256: b1eb43748041c880796cd077f1a07c3d94e93ae84bba5ed36800a33554ae05de
+  sha256: 0b83d1ce8d7845b959dcb20e1a5c3c8883b6541d9c52ab02cce5166b75ec805f
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -46,7 +47,6 @@ about:
     have a really fast implementation.
   dev_url: https://github.com/horejsek/python-fastjsonschema
   doc_url: https://horejsek.github.io/python-fastjsonschema
-  doc_source_url: https://github.com/horejsek/python-fastjsonschema/tree/master/docs
 
 extra:
   recipe-maintainers:
