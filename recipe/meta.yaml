@@ -1,5 +1,5 @@
 {% set name = "python-fastjsonschema" %}
-{% set version = "2.22.1" %}
+{% set version = "2.22.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name.split('-')[1][0] }}/{{ name.split('-')[1] }}/{{ name.split('-')[1] }}-{{ version }}.tar.gz
-  sha256: 0b83d1ce8d7845b959dcb20e1a5c3c8883b6541d9c52ab02cce5166b75ec805f
+  sha256: 72064e12356a7d6ef02165be2946b9abadbdf238536e07eb587e3dbaa33099cf
 
 build:
   number: 0
